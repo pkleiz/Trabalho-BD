@@ -1,0 +1,247 @@
+/*======= Layout ========*/
+
+/*-----Barra de navegação------*/
+.navbar-inverse .navbar-brand
+{
+    color:white;
+    transition: color 0.5s;
+}
+
+.navbar-inverse .navbar-brand:hover
+{
+    color:deepskyblue;
+    font-size: 20px;
+}
+html,body,.capa
+{
+    height: 100%;
+    overflow: auto;
+}
+body
+{
+    background: url("imagens/fundo2.png"),
+                url("imagens/ruido.png"),
+                linear-gradient(50deg,#1b6d85,#985f0d);
+    background-attachment: fixed;
+    font-family:Menlo, Monaco, Consolas, "Courier New", monospace
+}
+
+nav.navbar-transparente
+{
+    padding: 15px 0px;
+    background: rgba(0,0,0,0.6);
+    border: none;
+}
+.divisor
+{
+    width: 1px;
+    height: 16px;
+    background: white;
+    margin: 16px 10px;
+}
+
+.navbar-inverse .navbar-nav>li>a, #rodape .nav a
+{
+    color: white;
+    transition: color 0.5s;
+    background: none;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover, #rodape .nav a:hover
+{
+    color: deepskyblue;
+    background: none;
+}
+
+/*-----Imagem de Capa------*/
+.capa
+{
+    display: table;
+    width: 100%;
+}
+.texto-capa
+{
+    text-align: center;
+    color: white;
+    display: table-cell;
+    vertical-align: middle;
+}
+a:hover
+{
+    text-decoration: none;
+}
+.sombra
+{
+    text-shadow: 4px 4px #0f0f0f,
+                 4px -4px #0f0f0f,
+                 -4px 4px #0f0f0f,
+                 -4px -4px #0f0f0f;
+}
+
+
+/*======= botões ========*/
+
+.btn-custom
+{
+    color: white;
+    border-radius: 500px;
+    /*--Para funcionar em outros navegadores--*/
+    -webkit-border-radius: 500px;
+    -moz-border-radius: 500px;
+    /*---------------------------------------*/
+    font-size: 20px;
+    text-transform: uppercase;
+    transition: background 0.5s,color 0.5s;
+}
+
+.btn-azul
+{
+    background: deepskyblue;
+}
+.btn-azul:hover
+{
+    background: #0070ff;
+    color: white;
+}
+.btn-transp
+{
+    border: 2px solid white;
+}
+.btn-transp:hover
+{
+    background: white;
+    color: black;
+}
+.btn-group-lg>.btn, .btn-lg
+{
+    font-weight:bolder;
+}
+
+/*======= conteudo ========*/
+
+#servicos
+{
+    background-color: white;
+    padding: 60px 20px;
+}
+
+.emoji
+{
+    font-size: 20px;
+    color: brown;
+}
+.espaco
+{
+    padding: 0px 5px 5px 5px;
+}
+#servicos p
+{
+    letter-spacing: -0.05em;
+}
+#recursos p
+{
+    letter-spacing: -0.05em;
+    color: white;
+}
+
+.img-format
+{
+    padding-left: 40px;
+    -webkit-filter: drop-shadow(10px 10px 3px #222);
+    filter: drop-shadow(10px 10px 3px #222);
+}
+
+/*======= rodape ========*/
+footer
+{
+    background: black;
+    padding: 10px 0px 10px 0px;
+    position: relative;
+}
+.branco
+{
+    color: white;
+}
+.item-rede-social
+{
+    float: right;
+}
+
+.letra
+{
+    text-transform: uppercase   ;
+}
+
+/*======= Tipografia ========*/
+h1
+{
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    margin-top: 50px;
+}
+@media screen and (max-width: 767px)
+{
+    h1
+    {
+        font-size: 50px;
+    }
+    .btn-custom
+    {
+        margin: 10px 15px;
+    }
+}
+
+@media screen and (min-width: 768px)
+{
+    h1
+    {
+        font-size: 70px;
+    }
+}
+
+@media screen and (min-width: 992px)
+{
+    h1
+    {
+        font-size: 80px;
+    }
+}
+
+@media screen and (min-width: 1200px)
+{
+    h1
+    {
+        font-size: 100px;
+    }
+    .btn-custom
+    {
+        margin: 10px 15px;
+        padding: 10px;
+    }
+
+}
+
+h2
+{
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+}
+h3
+{
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: -0.07em;
+}
+#servicos h2, #servicos h3
+{
+    color: deepskyblue;
+}
+#recursos h2
+{
+    color: white;
+}
+#recursos h3
+{
+    color: #5bc0de;
+}
