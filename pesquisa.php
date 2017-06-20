@@ -84,7 +84,8 @@
 
 					<div class="list-group">
 						<a href="?consulta=7" class="list-group-item">As datas de fim mais recentes de uma administração por DP</a>
-						<a href="?consulta=8" class="list-group-item">Mostra a média de homicídios culposos das dps no ano de 2010</a>
+						<a href="?consulta=8" class="list-group-item">Mostra a média de homicídios culposos das dps
+							no ano de 2017</a>
 						<a href="?consulta=9" class="list-group-item">Quantidade de dps por AISP</a>
             <a href="?consulta=11" class="list-group-item">Lista de Crimes por DP</a>
 					</div>

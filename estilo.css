@@ -207,6 +207,12 @@ select
 {
     border: none;
 }
+.preto
+{
+    background: black;
+}
+
+
 select:hover
 {
     border: none;
