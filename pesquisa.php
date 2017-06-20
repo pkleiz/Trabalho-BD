@@ -185,7 +185,7 @@
             switch($consulta){
               case 1:
                 echo "<thead><tr><th style='text-align: center;' colspan='2'>Nome e identificação de todos os delegado</th></tr></thead>";
-                $sql = "SELECT Nome, ID_Delegado FROM Delegado";
+                $sql = "SELECT Nome, ID_Delegado FROM delegado";
                 $result = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($result) > 0){
                     echo "<thead><tr><th>ID</th><th>Nome</th></tr></thead>";
@@ -200,7 +200,7 @@
                 break;
               case 2:
                 echo "<thead><tr><th style='text-align: center;' colspan='2'>AISPs e os batalhões que as comandam</th></tr></thead>";
-                $sql = "SELECT AISP.ID_AISP as Aisps, ID_Batalhao as Batalhao from AISP natural join Batalhao";
+                $sql = "SELECT aisp.ID_AISP as Aisps, ID_Batalhao as Batalhao from aisp natural join batalhao";
                 $result = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($result) > 0){
                     echo "<thead><tr><th>AISP</th><th>Batalhao</th></tr></thead>";
@@ -216,7 +216,7 @@
                 break;
               case 3:
                 echo "<thead><tr><th style='text-align: center;' colspan='2'>DPs sem delegado</th></tr></thead>";
-                $sql = "SELECT D.ID_DP as DP from DP D LEFT OUTER JOIN Administra A on A.ID_DP = D.ID_DP where A.ID_Delegado is null";
+                $sql = "SELECT D.ID_DP as DP from dp D LEFT OUTER JOIN administra A on A.ID_DP = D.ID_DP where A.ID_Delegado is null";
                 $result = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($result) > 0){
                     echo "<thead><tr><th>DP</th></tr></thead>";
@@ -232,7 +232,7 @@
               case 4:
 
                 echo "<thead><tr><th style='text-align: center;' colspan='2'>AISPs que tem DPs com crimes registrados</th></tr></thead>";
-                $sql = "SELECT A.ID_AISP AISPs, D.ID_DP DPs from AISP A left outer join DP D on A.ID_AISP = D.ID_AISP left outer join Crime C on D.ID_DP = C.ID_DP";
+                $sql = "SELECT A.ID_AISP AISPs, D.ID_DP DPs from aisp A left outer join dp D on A.ID_AISP = D.ID_AISP left outer join crime C on D.ID_DP = C.ID_DP";
                 $result = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($result) > 0){
                     echo "<thead><tr><th>AISP</th><th>DP</th></tr></thead>";
@@ -248,7 +248,7 @@
                 break;
               case 5:
                 echo "<thead><tr><th style='text-align: center;' colspan='2'>AISPs com seus batalhões e suas áreas de cobertura</th></tr></thead>";
-                $sql = "SELECT A.ID_AISP as Aisp, Nome as Area, ID_Batalhao as Batalhao from Area_Cobertura natural join AISP as A natural join Batalhao";
+                $sql = "SELECT A.ID_AISP as Aisp, Nome as Area, ID_Batalhao as Batalhao from area_cobertura natural join aisp as A natural join batalhao";
                 $result = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($result) > 0){
                     echo "<thead><tr><th>AISP</th><th>Bairro</th><th>Batalhao</th></tr></thead>";
@@ -263,7 +263,7 @@
                 break;
               case 6:
                 echo "<thead><tr><th style='text-align: center;' colspan='2'>AISP que comandam batalhão mas não contém nenhuma DP</th></tr></thead>";
-                $sql = "SELECT A.ID_AISP from batalhao B natural join AISP A left join DP D on D.ID_AISP = A.ID_AISP where D.ID_AISP is null";
+                $sql = "SELECT A.ID_AISP from batalhao B natural join aisp A left join dp D on D.ID_AISP = A.ID_AISP where D.ID_AISP is null";
                 $result = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($result) > 0){
                     echo "<thead><tr><th>AISP</th></tr></thead>";
@@ -278,7 +278,7 @@
                 break;
               case 7:
                 echo "<thead><tr><th style='text-align: center;' colspan='2'>A data de fim mais recente de uma administração por DP</th></tr></thead>";
-                $sql = "SELECT D.ID_DP as DP, max(dataFim) data from DP D natural join Administra";
+                $sql = "SELECT D.ID_DP as DP, max(dataFim) data from dp D natural join administra";
                 $result = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($result) > 0){
                     echo "<thead><tr><th>DP</th><th>Data Final do Mandato</th></tr></thead>";
@@ -293,7 +293,7 @@
                 break;
               case 8:
                 echo "<thead><tr><th style='text-align: center;' colspan='2'>Média de homicídios culposos das DPs no ano de 2017</th></tr></thead>";
-                $sql = "SELECT D.ID_DP as DPs, avg(Homicidio_Culposo) media from DP D natural join Crime where ano = 2017 group by DPs";
+                $sql = "SELECT D.ID_DP as DPs, avg(Homicidio_Culposo) media from dp D natural join crime where ano = 2017 group by DPs";
                 $result = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($result) > 0){
                     echo "<thead><tr><th>DP</th><th>Media</th></tr></thead>";
@@ -308,7 +308,7 @@
                 break;
               case 9:
                 echo "<thead><tr><th style='text-align: center;' colspan='2'>Quantidade de DPs por AISP</th></tr></thead>";
-                $sql = "SELECT A.ID_AISP as Aisps, count(D.ID_DP) as qtd from AISP A natural join DP D group by Aisps";
+                $sql = "SELECT A.ID_AISP as Aisps, count(D.ID_DP) as qtd from aisp A natural join dp D group by Aisps";
                 $result = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($result) > 0){
                     echo "<thead><tr><th>AISP</th><th>Total DPs</th></tr></thead>";
@@ -323,7 +323,7 @@
                 break;
               case 10:
                 echo "<thead><tr><th style='text-align: center;' colspan='2'>Mostra a AISP com maior área de cobertura</th></tr></thead>";
-                $sql = "SELECT A.ID_AISP as Aisp, count(nome) total from AISP A natural join Area_Cobertura group by Aisp having count(Nome) >= all (select count(Nome) from AISP A natural join Area_Cobertura group by A.ID_AISP)";
+                $sql = "SELECT A.ID_AISP as Aisp, count(nome) total from aisp A natural join area_cobertura group by Aisp having count(Nome) >= all (select count(Nome) from aisp A natural join area_cobertura group by A.ID_AISP)";
                 $result = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($result) > 0){
                     echo "<thead><tr><th>AISP</th><th>Total Bairros</th></tr></thead>";
