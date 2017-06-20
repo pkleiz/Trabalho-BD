@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-  include("/connection.php");
+  include("connection.php");
 ?>
 
 <html lang="pt-br">
@@ -86,6 +86,7 @@
 						<a href="?consulta=7" class="list-group-item">As datas de fim mais recentes de uma administração por DP</a>
 						<a href="?consulta=8" class="list-group-item">Mostra a média de homicídios culposos das dps no ano de 2010</a>
 						<a href="?consulta=9" class="list-group-item">Quantidade de dps por AISP</a>
+            <a href="?consulta=11" class="list-group-item">Lista de Crimes por DP</a>
 					</div>
 				</div>
 				<div class="col-md-4 ">
@@ -314,7 +315,7 @@
                     echo "<thead><tr><th>AISP</th><th>Total DPs</th></tr></thead>";
                     while($row = mysqli_fetch_assoc($result)) {
                       echo "<tr><td>AISP ";
-                        echo $row["Aisps"] . "</td><td>" . $row["qtd"] . " DPs" ;
+                      echo $row["Aisps"] . "</td><td>" . $row["qtd"] . " DPs" ;
                       echo "</td></tr>";
                     }
                 } else {
@@ -329,8 +330,38 @@
                     echo "<thead><tr><th>AISP</th><th>Total Bairros</th></tr></thead>";
                     while($row = mysqli_fetch_assoc($result)) {
                       echo "<tr><td>AISP ";
-                        echo $row["Aisp"] . "</td><td>" . $row["total"] ;
+                      echo $row["Aisp"] . "</td><td>" . $row["total"] ;
                       echo "</td></tr>";
+                    }
+                } else {
+                    echo "<tr><td>0 resultados</td><tr>";
+                }
+                break;
+              case 11:
+                echo "<thead><tr><th style='text-align: center;' colspan='12'>Crimes registrados por DP</th></tr></thead>";
+                $sql = "SELECT * from crime natural join dp";
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0){
+                    echo "<thead><tr><th>DP</th><th>Mês</th>
+                    <th>Latrocínio</th><th>Homicídio Culposo</th><th>Homicídio Doloso</th>
+                    <th>Estupro</th><th>Tentativa de Homicídio</th>
+                    <th>Lesão Corporal</th><th>Lesao Coporal com Morte</th><th>Lesao Corporal Dolosa</th>
+                    <th>Encontro de Cadáveres</th><th>Encontro Ossada</th></tr></thead>";
+                    while($row = mysqli_fetch_assoc($result)) {
+                      echo "<tr>";
+                      echo "<td>" . $row["ID_DP"] . "ª</td>";
+                      echo "<td>0" . $row["Mes"] ."/" . $row["Ano"] . "</td>" ;
+                      echo "<td>" . $row["Latrocinio"] . "</td>";
+                      echo "<td>" . $row["Homicidio_Culposo"] . "</td>";
+                      echo "<td>" . $row["Homicidio_Doloso"] . "</td>";
+                      echo "<td>" . $row["Estupro"] . "</td>";
+                      echo "<td>" . $row["Tentativa_De_Homicidio"] . "</td>";
+                      echo "<td>" . $row["Lesao_Corporal"] . "</td>";
+                      echo "<td>" . $row["Lesao_Corporal_Morte"] . "</td>";
+                      echo "<td>" . $row["Lesao_Corporal_Dolosa"] . "</td>";
+                      echo "<td>" . $row["Encontro_Cadaveres"] . "</td>";
+                      echo "<td>" . $row["Encontro_Ossada"] . "</td>";
+                      echo "</tr>";
                     }
                 } else {
                     echo "<tr><td>0 resultados</td><tr>";
